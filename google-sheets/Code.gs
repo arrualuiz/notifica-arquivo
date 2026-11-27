@@ -483,7 +483,7 @@ function syncCategoryCatalog_(spreadsheet, config) {
     .getValues()
     .forEach((row) => {
       const packageName = String(row[NOTIFICATION_COLUMNS.packageName] || '').trim();
-      if (!packageName || existingPackages.has(packageName) || newApps.has(packageName)) return;
+      if (!isPackageName_(packageName) || existingPackages.has(packageName) || newApps.has(packageName)) return;
       const appName = String(row[NOTIFICATION_COLUMNS.appName] || packageName).trim();
       const category = automaticCategory_(
         packageName,
@@ -504,6 +504,12 @@ function syncCategoryCatalog_(spreadsheet, config) {
   if (rows.length > 0) {
     target.getRange(target.getLastRow() + 1, 1, rows.length, CATEGORY_HEADERS.length).setValues(rows);
   }
+}
+
+// Linhas com as colunas trocadas poem texto da notificacao em Pacote; so entra no catalogo
+// o que tem cara de pacote Android (com.empresa.app) ou o proprio "android".
+function isPackageName_(value) {
+  return value === 'android' || /^[a-zA-Z][\w]*(\.[\w]+)+$/.test(value);
 }
 
 function updateNotificationCategories_(spreadsheet, config) {

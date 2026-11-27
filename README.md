@@ -3,6 +3,17 @@
 Aplicativo Android em Kotlin e Jetpack Compose para arquivar notificacoes localmente
 e sincroniza-las com um Google Sheets.
 
+## Distracoes e Categorias limpas (26/11/2026)
+
+- Nova categoria `Distracoes` (Duolingo, Instagram e Clash Royale) na aba `Categorias`.
+  A aba `Notificacoes` tem um filtro que esconde essas linhas; para ver, uso a visao de
+  filtro `Só distrações` (ou `Tudo`). Para esconder outro app, ponho `Distracoes` na
+  categoria dele.
+- Mercado Pago, PagBank e PicPay passaram para `Financeiro`; KaBuM! para `Compras`.
+- A aba `Categorias` tinha linhas com texto de notificacao no lugar do pacote (linhas da
+  `Notificacoes` com as colunas trocadas). Limpei e o `Code.gs` agora so cataloga o que tem
+  formato de pacote Android (`isPackageName_`).
+
 ## Novidades do Apps Script 0.7.1 (depois da v0.8.0)
 
 O aplicativo Android continua na 0.8.0; as mudancas abaixo estao todas em
